@@ -30,7 +30,7 @@ export function Projects() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayedProjects.map((project, index) => (
-                <Card key={index} className="flex flex-col shadow-md transition-all hover:shadow-xl hover:-translate-y-1 border border-border/40">
+                <Card key={index} className="flex flex-col shadow-md transition-all hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 border border-border/40">
                     <CardHeader>
                         <CardTitle>{project.title}</CardTitle>
                         <CardDescription>{project.date}</CardDescription>
@@ -53,13 +53,13 @@ export function Projects() {
                                 </a>
                             </Button>
                         )}
-                        {project.live && (
-                            <Button variant="ghost" size="sm" asChild>
-                                <a href={project.live} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                                    <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                                </a>
-                            </Button>
-                        )}
+                            {project.link && (
+                                <Button variant="ghost" size="sm" asChild>
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                                    </a>
+                                </Button>
+                            )}
                     </CardFooter>
                 </Card>
             ))}
