@@ -47,19 +47,12 @@ export function Projects() {
                     </CardContent>
                     <CardFooter>
                         {project.link && (
-                             <Button variant="secondary" size="sm" asChild className="border border-border hover:bg-primary/10 hover:text-primary">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    <Github className="mr-2 h-4 w-4" /> GitHub
+                            <Button variant="ghost" size="sm" asChild>
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                    <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
                                 </a>
                             </Button>
                         )}
-                            {project.link && (
-                                <Button variant="ghost" size="sm" asChild>
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                                    </a>
-                                </Button>
-                            )}
                     </CardFooter>
                 </Card>
             ))}
