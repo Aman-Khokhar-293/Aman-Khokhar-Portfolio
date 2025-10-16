@@ -19,7 +19,7 @@ export function Skills() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {skills.map((skillCategory) => (
-          <Card key={skillCategory.category} className="group shadow-md transition-all hover:shadow-xl hover:-translate-y-1 bg-card/50 border border-border/40">
+          <Card key={skillCategory.category} className="group shadow-md transition-all hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 bg-card/50 border border-border/40">
             <CardHeader>
               <CardTitle className="flex items-center gap-4 text-xl">
                 {iconMap[skillCategory.category as keyof typeof iconMap]}

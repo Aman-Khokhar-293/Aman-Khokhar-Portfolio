@@ -1,5 +1,4 @@
 import { Header } from "@/components/sections/header";
-import { Hero } from "@/components/sections/hero";
 import { Skills } from "@/components/sections/skills";
 import { AiProjectHighlight } from "@/components/sections/ai-project-highlight";
 import { Projects } from "@/components/sections/projects";
@@ -8,6 +7,7 @@ import { Achievements } from "@/components/sections/achievements";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { ScrollAnimator } from "@/components/scroll-animator";
+import { Hero } from "@/components/sections/hero";
 
 export default function Home() {
   return (

@@ -26,7 +26,7 @@ export function Achievements() {
     : initialAchievements;
 
   const renderCertificate = (cert: typeof achievements[0]) => (
-    <Card className="transition-all hover:shadow-lg hover:-translate-y-1 bg-card/50 border border-border/40 w-full flex flex-col">
+    <Card className="transition-all hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 bg-card/50 border border-border/40 w-full flex flex-col">
       <CardContent className="p-4 flex-grow">
         <div className="flex items-start gap-4">
             <Award className="h-8 w-8 text-primary shrink-0 mt-1" />

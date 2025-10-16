@@ -78,7 +78,7 @@ export default {
             height: '0',
           },
         },
-        spin: {
+        'spin-slow': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
@@ -86,7 +86,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'spin': 'spin 10s linear infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
       },
     },
   },

@@ -1,88 +1,33 @@
+
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Download, Mail, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data";
-import Confetti from 'react-confetti';
-import { useTheme } from 'next-themes';
+import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    // This check ensures window is defined, preventing SSR errors.
-    if (typeof window !== 'undefined') {
-        setShowConfetti(true);
-        setDimensions({ width: window.innerWidth, height: window.innerHeight });
-
-        const timer = setTimeout(() => {
-            setShowConfetti(false);
-        }, 8000); // Confetti will last for 8 seconds
-
-        // Handle window resize
-        const handleResize = () => {
-            setDimensions({ width: window.innerWidth, height: window.innerHeight });
-        };
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener('resize', handleResize);
-        };
-    }
-  }, []);
-
-  const confettiColors = resolvedTheme === 'dark' 
-    ? ['#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899', '#f97316'] 
-    : ['#38bdf8', '#60a5fa', '#a78bfa', '#f472b6', '#fb923c'];
-
   return (
-    <section id="home" className="container relative mx-auto py-24 sm:py-32 px-4 md:px-8">
-      {showConfetti && (
-        <Confetti
-          width={dimensions.width}
-          height={dimensions.height}
-          numberOfPieces={200}
-          recycle={false}
-          gravity={0.1}
-          colors={confettiColors}
-          className="!fixed top-0 left-0 z-[100]"
-        />
-      )}
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-primary animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out">
-          {personalInfo.name}
-        </h1>
-        <p className="mt-4 text-xl md:text-2xl text-muted-foreground font-medium">
-          {personalInfo.title}
-        </p>
-
-        <div className="mt-8 flex flex-wrap justify-center items-center gap-x-6 gap-y-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary" />
-                <a href={`mailto:${personalInfo.contact.email}`} className="hover:text-primary">{personalInfo.contact.email}</a>
-            </div>
-            <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span>{personalInfo.location}</span>
-            </div>
-        </div>
-
-        <p className="mt-8 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            {personalInfo.objective}
-        </p>
-
-        <div className="mt-10">
-            <Button size="lg" asChild>
-                <a href="/Aman_Khokhar_Resume.pdf" download>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Resume
-                </a>
-            </Button>
-        </div>
+    <section id="home" className="h-[calc(100vh-56px)] w-full relative flex flex-col items-center justify-center bg-background text-center px-4 overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      <div className="relative z-10 flex flex-col items-center">
+          <h1 className="font-headline text-6xl md:text-8xl font-extrabold tracking-tight text-primary drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+            {personalInfo.name}
+          </h1>
+          <p className="mt-4 text-xl md:text-2xl text-muted-foreground font-semibold">
+            {personalInfo.title}
+          </p>
+          <p className="mt-8 max-w-3xl mx-auto text-base md:text-lg leading-relaxed text-foreground/80">
+              {personalInfo.objective}
+          </p>
+          <div className="mt-10">
+              <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
+                  <a href="/Aman_Khokhar_Resume.pdf" download>
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Resume
+                  </a>
+              </Button>
+          </div>
       </div>
     </section>
   );

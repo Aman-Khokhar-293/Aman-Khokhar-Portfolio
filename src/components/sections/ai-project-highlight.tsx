@@ -23,7 +23,7 @@ export async function AiProjectHighlight() {
       <Card className="bg-secondary/50 border-primary/30 shadow-lg transition-all hover:shadow-primary/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-50 dark:opacity-100"></div>
         <div 
-          className="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] animate-spin [animation-duration:10s]"
+          className="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] animate-spin-slow"
           style={{
             background: 'conic-gradient(from 90deg at 50% 50%, hsl(var(--primary)) 0%, hsl(var(--primary)) 50%, transparent 100%)',
             opacity: 0.15,
