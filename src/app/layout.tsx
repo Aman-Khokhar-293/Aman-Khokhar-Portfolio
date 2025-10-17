@@ -2,6 +2,8 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
+import { ScrollEffect3D } from '@/components/effects/ScrollEffect3D';
+import { GreetingOverlay } from '@/components/effects/GreetingOverlay';
 import { Inter, Alegreya } from 'next/font/google';
 
 const inter = Inter({
@@ -39,6 +41,8 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <ScrollEffect3D />
+          <GreetingOverlay />
         </ThemeProvider>
       </body>
     </html>
