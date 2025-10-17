@@ -1,7 +1,8 @@
 import { getResumeScreeningToolDescription } from "@/ai/flows/resume-screening-tool-description";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Cpu } from "lucide-react";
+import { Cpu, Github } from "lucide-react";
 import { projects } from "@/lib/data";
 
 export async function AiProjectHighlight() {
@@ -10,7 +11,7 @@ export async function AiProjectHighlight() {
     const aiDescription = await getResumeScreeningToolDescription({
       projectName: "AI-Powered Resume Screening & Job Match System",
     });
-    description = aiDescription.description;
+    description = "This system streamlines recruitment using NLP and machine learning to parse resumes, match candidates to jobs, and analyze skill gaps. It automates candidate evaluation, reduces manual screening time, minimizes bias, and improves job matching accuracy, turning recruitment into a data-driven, strategic advantage.";
   } catch (error) {
     // The AI-generated description failed. Fallback to the hardcoded description.
     description = "An advanced system designed to streamline the recruitment process by automatically parsing resumes, matching candidates to job descriptions, and analyzing skill gaps using Natural Language Processing and machine learning algorithms.";
@@ -52,6 +53,15 @@ export async function AiProjectHighlight() {
                   <Badge key={tech} variant="secondary" className="bg-primary/10 text-primary border-primary/30 transition-all hover:shadow-[0_0_15px_hsl(var(--primary))] hover:shadow-primary/50 hover:-translatey-1">{tech}</Badge>
                 ))}
               </div>
+              {aiProject?.link && (
+                <div className="mt-6">
+                  <Button variant="secondary" size="sm" asChild>
+                    <a href={aiProject.link} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4" /> View on GitHub
+                    </a>
+                  </Button>
+                </div>
+              )}
             </div>
           </CardContent>
         </div>
