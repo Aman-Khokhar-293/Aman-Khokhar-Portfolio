@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 export function ScrollAnimator({ children, className }: { children: ReactNode, className?: string }) {
@@ -18,7 +19,7 @@ export function ScrollAnimator({ children, className }: { children: ReactNode, c
         }
       },
       {
-        rootMargin: '0px',
+        rootMargin: '-50px',
         threshold: 0.1,
       }
     );
@@ -35,15 +36,14 @@ export function ScrollAnimator({ children, className }: { children: ReactNode, c
   }, []);
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={cn(
-        'transition-all duration-1000 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
-        className
-      )}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
